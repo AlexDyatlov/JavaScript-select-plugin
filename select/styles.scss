@@ -7,7 +7,7 @@ body{
 .container{
   max-width: 1330px;
   padding: 0 15px;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .app {
@@ -25,12 +25,16 @@ $height: 46px;
 .select{
   width: 100%;
   position: relative;
+  z-index: 10;
   &.open{
     .select__dropdown{
       display: block;
     }
     .select__input{
       border-bottom: none;
+    }
+    .select__backdrop{
+      display: block;
     }
   }
   &__input{
@@ -55,6 +59,15 @@ $height: 46px;
     overflow-y: auto;
     box-shadow: 2px 3px 5px rgba(0, 0, 0, .3);
   }
+  &__backdrop{
+    position: fixed;
+    display: none;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 }
 .select__list{
   padding: 0;
@@ -63,6 +76,9 @@ $height: 46px;
   &-item{
     padding: 1rem;
     border-bottom: 1px solid #ccc;
+    &.selected {
+      background: bisque;
+    }
     &:hover{
       background: #eee;
       cursor: pointer;
